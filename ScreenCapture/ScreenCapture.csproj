@@ -88,13 +88,18 @@
       <DependentUpon>ScreenCaptureButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CaptureWindowViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CaptureWindow.xaml.cs">
       <DependentUpon>CaptureWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaptureWindowPopup.xaml.cs">
       <DependentUpon>CaptureWindowPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PreviewCaptureWindow.xaml.cs">
+      <DependentUpon>PreviewCaptureWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PreviewCaptureButtonsPanel.xaml.cs">
+      <DependentUpon>PreviewCaptureButtonsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowStateEnum.cs" />
     <Page Include="MainWindow.xaml">
@@ -118,6 +123,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaptureWindowPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PreviewCaptureWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PreviewCaptureButtonsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +220,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\CaptureWindow\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PreviewCapture\cancel.png" />
+    <Resource Include="images\PreviewCapture\copy.png" />
+    <Resource Include="images\PreviewCapture\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

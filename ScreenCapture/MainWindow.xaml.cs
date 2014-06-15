@@ -20,7 +20,7 @@ namespace ScreenCapture
             Bootstrapper.Initialise();
             screenManager = ContainerManager.Resolve<CaptureAPI>();
 
-            this.DataContext = new MainViewModel();
+            //this.DataContext = new MainViewModel();
             int countofProcess = RunningInstance();
             if (countofProcess == 1)
             {
@@ -34,7 +34,7 @@ namespace ScreenCapture
                 return;
             }
 
-            InitializeComponent();      
+            InitializeComponent();
         }
 
         public static int RunningInstance()
@@ -58,7 +58,7 @@ namespace ScreenCapture
             }
             //Нет, таких же процессов не найдено
             return count;
-        }   
+        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -80,7 +80,7 @@ namespace ScreenCapture
         private void MainWindowName_Loaded(object sender, RoutedEventArgs e)
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-            (DataContext as MainViewModel).Left = screenWidth / 2 - 150;
+            this.Left = screenWidth / 2 - 150;
         }
 
         private void FullScreenCapture_Button_Click(object sender, RoutedEventArgs e)
@@ -104,6 +104,6 @@ namespace ScreenCapture
             (sender as Window).WindowState = System.Windows.WindowState.Normal;
         }
 
-        
+
     }
 }
