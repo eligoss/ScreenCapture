@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Unity.AutoRegister</id>
+    <version>0.2</version>
+    <title>UnityContainer AutoRegisterExtension</title>
+    <authors>Kazuki</authors>
+    <owners>Kazuki</owners>
+    <licenseUrl>http://unityautoregister.codeplex.com/license</licenseUrl>
+    <projectUrl>http://unityautoregister.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>UnityExportAttribute class is automatically registered in the UnityContainer. And inteception configuration is attribute.</description>
+    <summary>This project is unity container extension that is attribute base register.</summary>
+    <tags>Unity DI Interception AOP Attribute</tags>
+    <dependencies>
+      <dependency id="Unity.Interception" version="2.1.505.0" />
+    </dependencies>
+  </metadata>
+</package>

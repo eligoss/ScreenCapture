@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Codeplex.Unity.AutoRegister</name>
+    </assembly>
+    <members>
+        <member name="T:Codeplex.Unity.AutoRegister.AutoRegistExtension">
+            <summary>
+            Auto regist UnityContainer extension.
+            </summary>
+        </member>
+        <member name="M:Codeplex.Unity.AutoRegister.AutoRegistExtension.AddProvider(Codeplex.Unity.AutoRegister.Config.RegistTypeTraitProvider)">
+            <summary>
+            This method regist type to UnityContainer.
+            </summary>
+            <param name="provider"></param>
+        </member>
+        <member name="T:Codeplex.Unity.AutoRegister.Config.RegistTypeTraitProvider">
+            <summary>
+            Provide RegistTypeTrait class.
+            </summary>
+        </member>
+        <member name="M:Codeplex.Unity.AutoRegister.Config.RegistTypeTraitProvider.GetTypes">
+            <summary>
+            Get target types.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Codeplex.Unity.AutoRegister.Config.RegistTypeTraitProvider.BuildTrait(System.Type)">
+            <summary>
+            Create RegistTypeTrait from Type.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Codeplex.Unity.AutoRegister.Config.RegistTypeTraitProvider.GetRegistTypeTraits">
+            <summary>
+            Get all RegistTypeTrait.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Codeplex.Unity.AutoRegister.Config.AssemblyRegistTypeTraitProvider">
+            <summary>
+            Provide RegistTypeTraits(Target type have UnityExportAttribute.)
+            </summary>
+        </member>
+        <member name="T:Codeplex.Unity.AutoRegister.InjectionMemberProvider">
+            <summary>
+            Provide InjectionMember to UnityExport
+            </summary>
+        </member>
+        <member name="M:Codeplex.Unity.AutoRegister.InjectionMemberProvider.GetInjectionMembers">
+            <summary>
+            Get InjectionMembers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait">
+            <summary>
+            UnityContainerに登録するための情報
+            </summary>
+        </member>
+        <member name="M:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.#ctor(System.Type)">
+            <summary>
+            コンテナに登録する型を指定してインスタンスを初期化
+            </summary>
+            <param name="toType">コンテナに登録する型</param>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.Name">
+            <summary>
+            コンテナに登録する名前
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.FromType">
+            <summary>
+            コンテナから取り出される時に使用する型
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.ToType">
+            <summary>
+            コンテナに登録する型
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.InjectionMembers">
+            <summary>
+            コンテナからInjectionされるメンバーの情報
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.LifetimeManager">
+            <summary>
+            登録した型のインスタンスのライフタイムを管理する型
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.Config.RegistTypeTrait.InjectionMemberProvider">
+            <summary>
+            InjectionMemberを提供する型を指定する。
+            </summary>
+        </member>
+        <member name="T:Codeplex.Unity.AutoRegister.Config.AnnotationRegistTypeTraitBuilder">
+            <summary>
+            UnityExportAttributeのついた型からRegistTypeTraitを作成するヘルパークラス
+            </summary>
+        </member>
+        <member name="T:Codeplex.Unity.AutoRegister.UnityExportAttribute">
+            <summary>
+            Marker attribute, auto regist to UnityContainer.
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.UnityExportAttribute.FromType">
+            <summary>
+            Get and set FromType.
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.UnityExportAttribute.Name">
+            <summary>
+            Get and set Name.
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.UnityExportAttribute.InjectionMembers">
+            <summary>
+            Get and set InjectionMember array. It use in sub class.
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.UnityExportAttribute.LifetimeManager">
+            <summary>
+            Get and set LifetimeManager type.
+            </summary>
+        </member>
+        <member name="P:Codeplex.Unity.AutoRegister.UnityExportAttribute.InjectionMemberProvider">
+            <summary>
+            Get and set InjectionMemverProvider type.
+            </summary>
+        </member>
+    </members>
+</doc>
