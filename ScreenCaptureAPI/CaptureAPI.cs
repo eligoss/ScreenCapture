@@ -55,7 +55,7 @@ namespace ScreenCaptureAPI
 
         public void Dispose()
         {
-
+            screenHelper.Dispose();
         }
     }
 }

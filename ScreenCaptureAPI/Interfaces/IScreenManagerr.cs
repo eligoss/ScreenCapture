@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using ScreenCaptureAPI.Models;
 namespace ScreenCaptureAPI
 {
-    public interface IScreenManager
+    public interface IScreenManager : IDisposable
     {
         /// <summary>
         /// Configure Screen Capture Job
@@ -28,5 +29,7 @@ namespace ScreenCaptureAPI
         /// <param name="inputParams">Input config params.</param>
         /// <returns>Bitmap Image.</returns>
         Bitmap TakeScreenshot(ScreenshotConfigModel inputParams);
+
+        void Dispose();
     }
 }

@@ -8,7 +8,7 @@ namespace ScreenCaptureAPI
 {
     public class ScreenManager : IScreenManager
     {
-        private ScreenCaptureJob screenCaptureJob;        
+        private ScreenCaptureJob screenCaptureJob;
 
         private readonly IConfigManager configManager;
 
@@ -31,7 +31,6 @@ namespace ScreenCaptureAPI
 
         public void StopCaptureScreenVideo()
         {
-            var stat = screenCaptureJob.Statistics;           
             screenCaptureJob.Stop();
         }
 
@@ -46,7 +45,7 @@ namespace ScreenCaptureAPI
             var gfxScreenshot = Graphics.FromImage(bmpScreenshot);
 
             // Take the screenshot from the upper left corner to the right bottom corner.
-            gfxScreenshot.CopyFromScreen(screenshotConfigModel.UpperLeftSource, screenshotConfigModel.UpperLeftDestination,screenshotConfigModel.BlockRegionSize, CopyPixelOperation.SourceCopy);
+            gfxScreenshot.CopyFromScreen(screenshotConfigModel.UpperLeftSource, screenshotConfigModel.UpperLeftDestination, screenshotConfigModel.BlockRegionSize, CopyPixelOperation.SourceCopy);
 
             return bmpScreenshot;
         }
@@ -69,5 +68,12 @@ namespace ScreenCaptureAPI
         }
 
         #endregion
+
+
+        public void Dispose()
+        {
+            if (screenCaptureJob != null)
+                screenCaptureJob.Dispose();
+        }
     }
 }

@@ -60,10 +60,12 @@
     <Reference Include="Microsoft.Expression.Encoder.Api2, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
     <Reference Include="Microsoft.Expression.Encoder.Types, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
     <Reference Include="Microsoft.Expression.Encoder.Utilities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -81,6 +83,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Options.cs" />
+    <Compile Include="Styles\ScreenCaptureButton.xaml.cs">
+      <DependentUpon>ScreenCaptureButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CaptureWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\CaptureWindow.xaml.cs">
+      <DependentUpon>CaptureWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaptureWindowPopup.xaml.cs">
+      <DependentUpon>CaptureWindowPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowStateEnum.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +109,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\ScreenCaptureButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaptureWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaptureWindowPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -155,6 +183,30 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MainWindow\capture.png" />
+    <Resource Include="images\MainWindow\FullScreenCapture.png" />
+    <Resource Include="images\MainWindow\logo.png" />
+    <Resource Include="images\MainWindow\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MainWindow\quit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MainWindow\power2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CaptureWindow\capture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CaptureWindow\movie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CaptureWindow\backArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CaptureWindow\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
