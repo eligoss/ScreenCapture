@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScreenCapture.ViewModels;
+using ScreenCaptureAPI;
+using ScreenCaptureAPI.Models;
+using System.Drawing;
+using System.Windows.Interop;
 
 namespace ScreenCapture.Views
 {
@@ -28,8 +32,36 @@ namespace ScreenCapture.Views
 
         private void Screenshot_Button_Click(object sender, RoutedEventArgs e)
         {
+            var captureAPI = ContainerManager.Resolve<CaptureAPI>();
 
+            PreviewCaptureWindow pcw = new PreviewCaptureWindow();
+            Window window = Window.GetWindow(this);
+            CaptureWindowViewModel cwvm = window.DataContext as CaptureWindowViewModel;
+            window.Close();
+
+            Rect r = (DataContext as CaptureWindowViewModel).SelectedRect;
+            System.Windows.Controls.Image s = new System.Windows.Controls.Image();
+
+
+
+            ScreenshotConfigModel screenshot = captureAPI.TakeScreenShot(new ScreenshotConfigModel { UpperLeftSource = new System.Drawing.Point((int)r.Left, (int)r.Top), BlockRegionSize = new System.Drawing.Size((int)r.Width + 1, (int)r.Height + 1) });
+            s.Source = Bitmap2BitmapImage(screenshot.Image, (int)r.Width + 1, (int)r.Height + 1);
+
+
+
+            pcw.DataContext = new PreViewCaptureWindowViewModel(r.Width, r.Height, null, cwvm, screenshot.Image);
+            pcw.ShowDialog();
         }
+
+        private BitmapSource Bitmap2BitmapImage(Bitmap bitmap,int width, int height )
+        {
+            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+            bitmap.GetHbitmap(),
+            IntPtr.Zero,
+            System.Windows.Int32Rect.Empty,
+            BitmapSizeOptions.FromWidthAndHeight(width, height));
+        }
+
 
         private void MovieCapture_Button_Click_1(object sender, RoutedEventArgs e)
         {

@@ -50,12 +50,11 @@
     </Window.Resources>
     <Canvas x:Name="DrawCanvas" KeyDown="Window_KeyDown" Loaded="Window_Loaded" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" MouseMove="Canvas_MouseMove">
         <Border  
-                 BorderBrush="#FF777792" BorderThickness="4"
+                 BorderBrush="#FF777792" BorderThickness="1"
                  Width="{Binding Path=BorderWidth}"
                  Height="{Binding Path=BorderHeight}"
                  Canvas.Left="{Binding Path=BorderLeft}" 
                  Canvas.Top="{Binding Path=BorderTop}">
-
         </Border>
         
         <Path Stroke="Black" Fill="WhiteSmoke" Opacity="0.7">

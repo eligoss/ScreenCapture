@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ScreenCapture.ViewModels;
+using ScreenCaptureAPI;
 
 namespace ScreenCapture.Views
 {
@@ -27,6 +28,8 @@ namespace ScreenCapture.Views
         bool mouseIsPressed = false;
         Point startPoint;
         Storyboard anim;
+        
+        private CaptureAPI screenManager;        
 
         public CaptureWindow()
         {

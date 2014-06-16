@@ -13,22 +13,24 @@ namespace ScreenCaptureAPI.Models
         public ScreenshotConfigModel()
         {
             this.configManager = ContainerManager.Resolve<IConfigManager>();
+            this.ImageFormat = configManager.DefaultScreenshotFormat;
+            this.FileFullPath = CreateFileFullPath(configManager.PathToScreenshotDirectory);
+
         }
 
-        public ScreenshotConfigModel(Point upperLeftSource, Point upperLeftDestination, Size blockRegionSize, ImageFormat imageFormat, string specificFolderToSave = null)
+        public ScreenshotConfigModel(Point upperLeftSource, Size blockRegionSize, ImageFormat imageFormat, string specificFolderToSave = null)
             : this()
         {
             this.UpperLeftSource = upperLeftSource;
-            this.UpperLeftDestination = upperLeftDestination;
             this.BlockRegionSize = blockRegionSize;
             this.ImageFormat = imageFormat;
             this.FileFullPath = CreateFileFullPath(specificFolderToSave);
         }
 
         public Point UpperLeftSource { get; set; }
-        public Point UpperLeftDestination { get; set; }
         public Size BlockRegionSize { get; set; }
         public ImageFormat ImageFormat { get; set; }
+        public Bitmap Image { get; set; }
         public string FileFullPath { get; set; }
 
         private string CreateFileFullPath(string specificFolderToSave = null)

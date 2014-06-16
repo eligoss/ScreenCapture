@@ -28,7 +28,7 @@ namespace ScreenCaptureAPI
         /// </summary>
         /// <param name="inputParams">Input config params.</param>
         /// <returns>Bitmap Image.</returns>
-        Bitmap TakeScreenshot(ScreenshotConfigModel inputParams);
+        ScreenshotConfigModel TakeScreenshot(ScreenshotConfigModel inputParams);
 
         void Dispose();
     }

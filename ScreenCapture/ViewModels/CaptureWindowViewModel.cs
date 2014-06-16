@@ -174,8 +174,7 @@ namespace ScreenCapture.ViewModels
             }
             IsFullScreen = isFullScreen;
         }
-
-
+        
         #endregion //[Constructors]
     }
 }
