@@ -48,8 +48,7 @@ namespace ScreenCapture.Views
             s.Source = Bitmap2BitmapImage(screenshot.Image, (int)r.Width + 1, (int)r.Height + 1);
 
 
-
-            pcw.DataContext = new PreViewCaptureWindowViewModel(r.Width, r.Height, null, cwvm, screenshot.Image);
+          //  pcw.DataContext = new PreViewCaptureWindowViewModel(r.Width, r.Height, null, cwvm, screenshot.Image);
             pcw.ShowDialog();
         }
 
