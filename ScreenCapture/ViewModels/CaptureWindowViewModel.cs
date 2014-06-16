@@ -83,13 +83,15 @@ namespace ScreenCapture.ViewModels
             get { return selectedRect; }
             set
             {
+
                 selectedRect = value;
                 BorderHeight = value.Height + 2;
                 BorderWidth = value.Width + 2;
                 BorderLeft = value.Left - 2;
                 BorderTop = value.Top - 2;
                 PopupTopStart = value.BottomLeft.Y;
-                Size = value.Width.ToString() + "\\" + value.Height.ToString();
+
+                Size = (value.Width + 1).ToString() + "\\" + (value.Height + 1).ToString();
                 if (Height - value.BottomLeft.Y > 80)
                     PopupTopEnd = value.BottomLeft.Y + 5;
                 else
@@ -164,6 +166,8 @@ namespace ScreenCapture.ViewModels
             Width = System.Windows.SystemParameters.PrimaryScreenWidth;
             if (isFullScreen)
             {
+                Height -= 1;
+                Width -= 1;
                 FullSreenRect = new Rect(0, 0, Width, Height);
                 SelectedRect = new Rect(0, 0, Width, Height);
             }
@@ -174,7 +178,7 @@ namespace ScreenCapture.ViewModels
             }
             IsFullScreen = isFullScreen;
         }
-        
+
         #endregion //[Constructors]
     }
 }

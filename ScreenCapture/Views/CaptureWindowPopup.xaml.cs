@@ -40,14 +40,20 @@ namespace ScreenCapture.Views
             window.Close();
 
             Rect r = (DataContext as CaptureWindowViewModel).SelectedRect;
+            r.Width += 1;
+            r.Height += 1;
+
             System.Windows.Controls.Image s = new System.Windows.Controls.Image();
 
+            ScreenshotConfigModel screenshot = captureAPI.TakeScreenShot(new ScreenshotConfigModel
+            {
+                UpperLeftSource = new System.Drawing.Point((int)r.Left, (int)r.Top),
+                BlockRegionSize = new System.Drawing.Size((int)r.Width, (int)r.Height)
+            });
 
+            s.Source = Bitmap2BitmapImage(screenshot.Image, (int)r.Width, (int)r.Height);
 
-            ScreenshotConfigModel screenshot = captureAPI.TakeScreenShot(new ScreenshotConfigModel { UpperLeftSource = new System.Drawing.Point((int)r.Left, (int)r.Top), BlockRegionSize = new System.Drawing.Size((int)r.Width + 1, (int)r.Height + 1) });
-            s.Source = Bitmap2BitmapImage(screenshot.Image, (int)r.Width + 1, (int)r.Height + 1);
-
-            pcw.DataContext = new PreViewCaptureWindowViewModel(r.Width, r.Height, s.Source, cwvm);
+            pcw.DataContext = new PreViewCaptureWindowViewModel(r.Width, r.Height, s.Source, cwvm, screenshot);
             pcw.ShowDialog();
         }
 
@@ -68,6 +74,7 @@ namespace ScreenCapture.Views
 
         private void BackSelection_Button_Click(object sender, RoutedEventArgs e)
         {
+            (DataContext as CaptureWindowViewModel).IsFullScreen = false;
             (DataContext as CaptureWindowViewModel).SelectedRect = new Rect(0, 0, 1, 1);
             this.Visibility = System.Windows.Visibility.Collapsed;
         }

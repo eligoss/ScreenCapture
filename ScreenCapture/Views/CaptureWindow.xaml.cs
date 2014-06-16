@@ -28,8 +28,8 @@ namespace ScreenCapture.Views
         bool mouseIsPressed = false;
         Point startPoint;
         Storyboard anim;
-        
-        private CaptureAPI screenManager;        
+
+        private CaptureAPI screenManager;
 
         public CaptureWindow()
         {
@@ -38,7 +38,8 @@ namespace ScreenCapture.Views
 
         private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if ((DataContext as CaptureWindowViewModel).IsFullScreen) return;
+            if ((DataContext as CaptureWindowViewModel).IsFullScreen)
+                return;
             popup.Visibility = System.Windows.Visibility.Collapsed;
             mouseIsPressed = true;
             startPoint = e.GetPosition(DrawCanvas);
@@ -46,7 +47,8 @@ namespace ScreenCapture.Views
 
         private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if ((DataContext as CaptureWindowViewModel).IsFullScreen) return;
+            if ((DataContext as CaptureWindowViewModel).IsFullScreen)
+                return;
             if ((DataContext as CaptureWindowViewModel).Height - (DataContext as CaptureWindowViewModel).SelectedRect.BottomLeft.Y > 80)
                 anim = FindResource("popupAnimationDown") as Storyboard;
             else
@@ -90,6 +92,6 @@ namespace ScreenCapture.Views
         private void Window_StateChanged(object sender, EventArgs e)
         {
             (sender as Window).WindowState = System.Windows.WindowState.Normal;
-        }     
+        }
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
+using ScreenCaptureAPI.Models;
 
 namespace ScreenCapture.ViewModels
 {
@@ -18,25 +14,19 @@ namespace ScreenCapture.ViewModels
         private double pImageWidth;
         private double pImageHeight;
 
-
-        public PreViewCaptureWindowViewModel(double width, double height, ImageSource source, CaptureWindowViewModel parent)
+        public PreViewCaptureWindowViewModel(double width, double height, ImageSource source, CaptureWindowViewModel parent, ScreenshotConfigModel screenshotConfigModel)
         {
-            WindowsSizeConfiguration(width, height, parent);
             pParentWindow = parent;
+            WindowsSizeConfiguration(width, height, parent);
             ImageHeight = source.Height * Render.PixelSize;
             ImageWidth = source.Width * Render.PixelSize;
             SourceImage = source;
+            this.ScreenshotConfigModel = screenshotConfigModel;
 
-            string tempstr = DateTime.Now.ToBinary().ToString();
-
-
-            tempstr = tempstr.Replace(".", "_");
-            tempstr = tempstr.Replace("-", String.Empty);
-            FileName = tempstr.Replace(":", "_");
-
+            FileName = screenshotConfigModel.FileName;
         }
 
-
+        public ScreenshotConfigModel ScreenshotConfigModel { get; set; }
 
         public double ImageWidth
         {
@@ -93,11 +83,14 @@ namespace ScreenCapture.ViewModels
             get { return pfileName; }
             set
             {
-                pfileName = value;
+                if (!string.IsNullOrEmpty(value))
+                {
+                    pfileName = value;
+                    ScreenshotConfigModel.FileName = value;
+                }
                 OnPropertyChanged("FileName");
             }
         }
-
 
         private void WindowsSizeConfiguration(double width, double height, CaptureWindowViewModel parent)
         {
@@ -111,8 +104,5 @@ namespace ScreenCapture.ViewModels
             else
                 WindowHeight = height + 140;
         }
-
-
-
     }
 }

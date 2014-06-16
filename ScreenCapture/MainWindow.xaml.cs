@@ -85,7 +85,10 @@ namespace ScreenCapture
 
         private void FullScreenCapture_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Views.CaptureWindow captureWindow = new Views.CaptureWindow();
+            captureWindow.Owner = this.Owner;
+            captureWindow.DataContext = new CaptureWindowViewModel(true);
+            captureWindow.ShowDialog();
         }
 
         private void Settings_Button_Click(object sender, RoutedEventArgs e)

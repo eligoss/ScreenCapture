@@ -14,6 +14,7 @@ namespace ScreenCaptureAPI.Models
         {
             this.configManager = ContainerManager.Resolve<IConfigManager>();
             this.ImageFormat = configManager.DefaultScreenshotFormat;
+            this.FileName = GetFileName();
             this.FileFullPath = CreateFileFullPath(configManager.PathToScreenshotDirectory);
 
         }
@@ -32,8 +33,7 @@ namespace ScreenCaptureAPI.Models
         public ImageFormat ImageFormat { get; set; }
         public Bitmap Image { get; set; }
         public string FileFullPath { get; set; }
-        public string fileName { get; set; }
-
+        public string FileName { get; set; }
 
         private string CreateFileFullPath(string specificFolderToSave = null)
         {
@@ -52,10 +52,16 @@ namespace ScreenCaptureAPI.Models
                 }
             }
 
-            var tmpFileName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", ""); //Create valid fileName
+            var tmpFileName = FileName == string.Empty ? GetFileName() : FileName;
             var fileType = ImageFormat.ToString();
 
             return string.Format("{0}{1}.{2}", pathToDirectory, tmpFileName, fileType);
+        }
+
+
+        private string GetFileName()
+        {
+            return DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "");
         }
     }
 }

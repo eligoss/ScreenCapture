@@ -33,6 +33,7 @@
                        Grid.ColumnSpan="4"
                        HorizontalAlignment="Left"
                        Opacity="0"
+                       Margin="5 0 0 0"
                        FontSize="16">                
             </TextBlock>
 
@@ -44,7 +45,7 @@
                        VerticalAlignment="Bottom" 
                        Grid.ColumnSpan="4"
                        HorizontalAlignment="Left"
-                       Opacity="0"
+                       Opacity="0"                       
                        FontSize="16">
             </TextBlock>
 
