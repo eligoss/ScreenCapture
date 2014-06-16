@@ -38,9 +38,8 @@ namespace ScreenCapture.Views
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            (DataContext as CaptureWindowViewModel).SelectedRect = new Rect(0, 0, 1, 1);
-            this.Visibility = System.Windows.Visibility.Collapsed;
- 
+            Window w = Window.GetWindow(this);
+            w.Close();
         }
     }
 }

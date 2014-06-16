@@ -26,12 +26,13 @@ namespace ScreenCapture.Views
 
         private void Move_Window_Handler(object sender, MouseButtonEventArgs e)
         {
-
+            Window w = Window.GetWindow(this);
+            this.DragMove();
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
-
+            (sender as Window).WindowState = System.Windows.WindowState.Normal;
         }
     }
 }

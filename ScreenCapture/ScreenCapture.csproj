@@ -95,10 +95,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Options.cs" />
+    <Compile Include="Render.cs" />
     <Compile Include="Styles\ScreenCaptureButton.xaml.cs">
       <DependentUpon>ScreenCaptureButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CaptureWindowViewModel.cs" />
+    <Compile Include="ViewModels\PreViewCaptureWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CaptureWindow.xaml.cs">
       <DependentUpon>CaptureWindow.xaml</DependentUpon>

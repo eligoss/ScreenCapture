@@ -21,7 +21,7 @@
     </Window.Triggers>
 
     <Border x:Name="MainBorder" CornerRadius="0,0,5,5" 
-            BorderBrush="#FF707070"
+            BorderBrush="#B8B8B8"
             Background="White"
             BorderThickness="2,0,2,3" Grid.ColumnSpan="2">
 

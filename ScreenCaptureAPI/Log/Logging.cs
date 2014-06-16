@@ -18,7 +18,7 @@ namespace ScreenCaptureAPI.Log
             if (ex != null)
             {
                 string error = "";
-                if (!string.IsNullOrWhiteSpace(message))
+                if (!string.IsNullOrEmpty(message))
                 {
                     error = message + ": ";
                 }

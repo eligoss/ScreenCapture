@@ -48,13 +48,14 @@
                             FillBehavior="HoldEnd"  AutoReverse="False"  />
         </Storyboard>
     </Window.Resources>
-    <Canvas x:Name="DrawCanvas" KeyDown="Window_KeyDown" Loaded="Window_Loaded" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" MouseMove="Canvas_MouseMove">
+    <Canvas x:Name="DrawCanvas" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
         <Border  
-                 BorderBrush="#FF777792" BorderThickness="1"
+                 BorderBrush="#FF777792" BorderThickness="4"
                  Width="{Binding Path=BorderWidth}"
                  Height="{Binding Path=BorderHeight}"
                  Canvas.Left="{Binding Path=BorderLeft}" 
                  Canvas.Top="{Binding Path=BorderTop}">
+
         </Border>
         
         <Path Stroke="Black" Fill="WhiteSmoke" Opacity="0.7">

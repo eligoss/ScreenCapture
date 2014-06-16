@@ -32,6 +32,8 @@ namespace ScreenCaptureAPI.Models
         public ImageFormat ImageFormat { get; set; }
         public Bitmap Image { get; set; }
         public string FileFullPath { get; set; }
+        public string fileName { get; set; }
+
 
         private string CreateFileFullPath(string specificFolderToSave = null)
         {
