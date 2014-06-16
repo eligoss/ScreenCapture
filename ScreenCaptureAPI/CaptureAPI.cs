@@ -32,24 +32,27 @@ namespace ScreenCaptureAPI
             screenHelper.StopCaptureScreenVideo();
         }
 
-
-        public void TakeScreenShot(ScreenshotConfigModel screenshotConfigModel, string specificFolderToSave = null)
+        public ScreenshotConfigModel TakeScreenShot(ScreenshotConfigModel screenshotConfigModel, string specificFolderToSave = null)
         {
-            Bitmap image = screenHelper.TakeScreenshot(screenshotConfigModel);
-            fileManager.SaveScreenShot(image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
-
+            return screenHelper.TakeScreenshot(screenshotConfigModel);
+           // fileManager.SaveScreenShot(image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
         }
+
+        public void SaveScreenShot(ScreenshotConfigModel screenshotConfigModel)
+        {
+            fileManager.SaveScreenShot(screenshotConfigModel.Image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
+        }
+
 
         public void TakeScreenShot()
         {
             var screenshotConfigModel = new ScreenshotConfigModel(
                 new Point(0, 0),
-                new Point(0, 0),
                 new Size((int)configManager.ScreenWidth, (int)configManager.ScreenHeight),
                 configManager.DefaultScreenshotFormat);
 
-            Bitmap image = screenHelper.TakeScreenshot(screenshotConfigModel);
-            fileManager.SaveScreenShot(image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
+            screenshotConfigModel = screenHelper.TakeScreenshot(screenshotConfigModel);
+            fileManager.SaveScreenShot(screenshotConfigModel.Image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
         }
 
 

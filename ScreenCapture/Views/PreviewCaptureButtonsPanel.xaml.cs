@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScreenCapture.ViewModels;
 
 namespace ScreenCapture.Views
 {
@@ -37,7 +38,9 @@ namespace ScreenCapture.Views
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            (DataContext as CaptureWindowViewModel).SelectedRect = new Rect(0, 0, 1, 1);
+            this.Visibility = System.Windows.Visibility.Collapsed;
+ 
         }
     }
 }

@@ -20,7 +20,8 @@ namespace ScreenCaptureAPI
 
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<CaptureAPI, CaptureAPI>();
+
+            container.RegisterType<CaptureAPI, CaptureAPI>();            
             container.RegisterType<ILogger, Log4netLogger>("log4net");
             container.RegisterType<IScreenManager, ScreenManager>();
             container.RegisterType<ScreenCaptureConfigModel, ScreenCaptureConfigModel>();
@@ -28,6 +29,7 @@ namespace ScreenCaptureAPI
             //Must be only one instance.
             IConfigManager configManager = new ConfigManager();
             container.RegisterInstance<IConfigManager>(configManager);
+
             container.RegisterType<IFileManager, FileManager>();
 
             //container.RegisterType<IDateTimeProvider, CurrentDateTimeProvider>();

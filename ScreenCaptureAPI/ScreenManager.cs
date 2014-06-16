@@ -34,20 +34,21 @@ namespace ScreenCaptureAPI
             screenCaptureJob.Stop();
         }
 
-        public Bitmap TakeScreenshot(ScreenshotConfigModel screenshotConfigModel)
+        public ScreenshotConfigModel TakeScreenshot(ScreenshotConfigModel screenshotConfigModel)
         {
             //Create a new bitmap.
-            var bmpScreenshot = new Bitmap((int)configManager.ScreenWidth,
-                                           (int)configManager.ScreenHeight,
+            var bmpScreenshot = new Bitmap((int)screenshotConfigModel.BlockRegionSize.Width,
+                                           (int)screenshotConfigModel.BlockRegionSize.Height,
                                            PixelFormat.Format32bppArgb);
 
             // Create a graphics object from the bitmap.
             var gfxScreenshot = Graphics.FromImage(bmpScreenshot);
 
             // Take the screenshot from the upper left corner to the right bottom corner.
-            gfxScreenshot.CopyFromScreen(screenshotConfigModel.UpperLeftSource, screenshotConfigModel.UpperLeftDestination, screenshotConfigModel.BlockRegionSize, CopyPixelOperation.SourceCopy);
+            gfxScreenshot.CopyFromScreen(screenshotConfigModel.UpperLeftSource, new Point(0, 0), screenshotConfigModel.BlockRegionSize, CopyPixelOperation.SourceCopy);
+            screenshotConfigModel.Image = bmpScreenshot;
 
-            return bmpScreenshot;
+            return screenshotConfigModel;
         }
 
         #region private
