@@ -17,22 +17,33 @@ namespace ScreenCaptureAPI
             this.configManager = configManager;
         }
 
-        public void ConfigureScreenCaptureJob(ScreenCaptureConfigModel screenCaptureConfigModel)
+        public void ConfigureJob(ScreenCaptureConfigModel screenCaptureConfigModel)
         {
             CreateScreenCaptureJob(screenCaptureConfigModel);
         }
 
-        public void StartCaptureScreenVideo(ScreenCaptureConfigModel screenCaptureConfigModel = null)
+        public void Start(ScreenCaptureConfigModel screenCaptureConfigModel = null)
         {
-            ConfigureScreenCaptureJob(screenCaptureConfigModel);
+            ConfigureJob(screenCaptureConfigModel);
 
             screenCaptureJob.Start();
         }
 
-        public void StopCaptureScreenVideo()
+        public void Stop()
         {
             screenCaptureJob.Stop();
         }
+
+        public void Resume()
+        {
+            screenCaptureJob.Resume();
+        }
+
+        public void Pause()
+        {
+            screenCaptureJob.Pause();
+        }
+
 
         public ScreenshotConfigModel TakeScreenshot(ScreenshotConfigModel screenshotConfigModel)
         {
@@ -52,6 +63,8 @@ namespace ScreenCaptureAPI
         }
 
         #region private
+
+
 
         private void CreateScreenCaptureJob(ScreenCaptureConfigModel screenCaptureConfigModel)
         {

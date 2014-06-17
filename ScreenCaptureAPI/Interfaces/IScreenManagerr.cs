@@ -9,19 +9,21 @@ namespace ScreenCaptureAPI
         /// Configure Screen Capture Job
         /// </summary>
         /// <param name="screenCaptureConfigModel">All input params that's are needed for configuration job.</param>
-        void ConfigureScreenCaptureJob(ScreenCaptureConfigModel screenCaptureConfigModel);
+        void ConfigureJob(ScreenCaptureConfigModel screenCaptureConfigModel);
 
         /// <summary>
         /// Method for start capture Screen Video.
         /// </summary>
         /// <param name="inputParams">Input config params.</param>        
-        void StartCaptureScreenVideo(ScreenCaptureConfigModel inputParams);
+        void Start(ScreenCaptureConfigModel inputParams);
 
         /// <summary>
         /// Method for stop capture Screen Video.
         /// </summary>
         /// <param name="inputParams">Input config params.</param>        
-        void StopCaptureScreenVideo();
+        void Stop();
+        void Pause();
+        void Resume();
 
         /// <summary>
         /// Method thats take a screenshot.

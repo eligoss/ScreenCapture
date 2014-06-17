@@ -103,14 +103,14 @@
                     <EventTrigger RoutedEvent="Mouse.MouseEnter">
                         <BeginStoryboard>
                             <Storyboard >
-                                <DoubleAnimation Storyboard.TargetName="CaptureImageTextBlock" Storyboard.TargetProperty="(FrameworkElement.Opacity)" From="0" To="1"  Duration="0"/>
+                                <DoubleAnimation Storyboard.TargetName="CaptureVideoTextBlock" Storyboard.TargetProperty="(FrameworkElement.Opacity)" From="0" To="1"  Duration="0"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                     <EventTrigger RoutedEvent="Mouse.MouseLeave">
                         <BeginStoryboard>
                             <Storyboard >
-                                <DoubleAnimation Storyboard.TargetName="CaptureImageTextBlock" Storyboard.TargetProperty="(FrameworkElement.Opacity)" From="1" To="0"  Duration="0"/>
+                                <DoubleAnimation Storyboard.TargetName="CaptureVideoTextBlock" Storyboard.TargetProperty="(FrameworkElement.Opacity)" From="1" To="0"  Duration="0"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>

@@ -12,11 +12,11 @@ namespace ScreenCaptureAPI
         private readonly IConfigManager configManager;
         private readonly IFileManager fileManager;
 
-        public CaptureAPI(IScreenManager screenWorker, IConfigManager configManager, IFileManager fileManager)
+        public CaptureAPI()
         {
-            this.screenHelper = screenWorker;
-            this.configManager = configManager;
-            this.fileManager = fileManager;
+            this.screenHelper = ContainerManager.Resolve<IScreenManager>();
+            this.configManager = ContainerManager.Resolve<IConfigManager>();
+            this.fileManager = ContainerManager.Resolve<IFileManager>();
         }
 
         public void StartRecording(ScreenCaptureConfigModel screenCaptureConfigModel = null)
@@ -24,18 +24,29 @@ namespace ScreenCaptureAPI
             if (screenCaptureConfigModel == null)
                 screenCaptureConfigModel = new ScreenCaptureConfigModel();
 
-            screenHelper.StartCaptureScreenVideo(screenCaptureConfigModel);
+            screenHelper.Start(screenCaptureConfigModel);
         }
 
         public void StopRecording()
         {
-            screenHelper.StopCaptureScreenVideo();
+            screenHelper.Stop();
         }
+
+        public void ResumeRecording()
+        {
+            screenHelper.Resume();
+        }
+
+        public void PauseRecording()
+        {
+            screenHelper.Pause();
+        }
+
 
         public ScreenshotConfigModel TakeScreenShot(ScreenshotConfigModel screenshotConfigModel, string specificFolderToSave = null)
         {
             return screenHelper.TakeScreenshot(screenshotConfigModel);
-           // fileManager.SaveScreenShot(image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
+            // fileManager.SaveScreenShot(image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
         }
 
         public void SaveScreenShot(ScreenshotConfigModel screenshotConfigModel)

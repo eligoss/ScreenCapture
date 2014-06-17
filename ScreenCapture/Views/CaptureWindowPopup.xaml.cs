@@ -69,7 +69,12 @@ namespace ScreenCapture.Views
 
         private void MovieCapture_Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //Capture video
+            VideoWindow videoWindow = new VideoWindow();
+            Window captureWindow = Window.GetWindow(this);
+            videoWindow.Owner = captureWindow.Owner;
+            videoWindow.DataContext = new VideoWindowViewModel((this.DataContext as CaptureWindowViewModel));
+            captureWindow.Close();
+            videoWindow.ShowDialog();
         }
 
         private void BackSelection_Button_Click(object sender, RoutedEventArgs e)

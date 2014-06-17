@@ -25,10 +25,9 @@ namespace ScreenCapture.Views
     /// </summary>
     public partial class CaptureWindow : Window
     {
-        bool mouseIsPressed = false;
-        Point startPoint;
-        Storyboard anim;
-
+        private bool mouseIsPressed = false;
+        private Point startPoint;
+        private Storyboard anim;
         private CaptureAPI screenManager;
 
         public CaptureWindow()

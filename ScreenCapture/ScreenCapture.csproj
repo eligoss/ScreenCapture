@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="ViewModels\CaptureWindowViewModel.cs" />
     <Compile Include="ViewModels\PreViewCaptureWindowViewModel.cs" />
+    <Compile Include="ViewModels\VideoWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CaptureWindow.xaml.cs">
       <DependentUpon>CaptureWindow.xaml</DependentUpon>
@@ -113,6 +114,12 @@
     </Compile>
     <Compile Include="Views\PreviewCaptureButtonsPanel.xaml.cs">
       <DependentUpon>PreviewCaptureButtonsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoWindow.xaml.cs">
+      <DependentUpon>VideoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoWindowButtonsPanel.xaml.cs">
+      <DependentUpon>VideoWindowButtonsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowStateEnum.cs" />
     <Page Include="MainWindow.xaml">
@@ -144,6 +151,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PreviewCaptureButtonsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoWindowButtonsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,6 +253,14 @@
     <Resource Include="images\PreviewCapture\cancel.png" />
     <Resource Include="images\PreviewCapture\copy.png" />
     <Resource Include="images\PreviewCapture\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\VideoWindow\cancel.png" />
+    <Resource Include="images\VideoWindow\pause.png" />
+    <Resource Include="images\VideoWindow\play.png" />
+    <Resource Include="images\VideoWindow\Rec.png" />
+    <Resource Include="images\VideoWindow\restart.png" />
+    <Resource Include="images\VideoWindow\stop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
