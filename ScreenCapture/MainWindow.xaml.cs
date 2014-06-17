@@ -93,7 +93,10 @@ namespace ScreenCapture
 
         private void Settings_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Views.SettingsWindow optWindow = new Views.SettingsWindow();
+            optWindow.Owner = this.Owner;
+            optWindow.DataContext = new SettingsViewModel();
+            optWindow.ShowDialog();
         }
 
         private void Quit_Button_Click(object sender, RoutedEventArgs e)

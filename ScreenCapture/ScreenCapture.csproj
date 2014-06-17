@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="ViewModels\CaptureWindowViewModel.cs" />
     <Compile Include="ViewModels\PreViewCaptureWindowViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\VideoWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CaptureWindow.xaml.cs">
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="Views\PreviewCaptureButtonsPanel.xaml.cs">
       <DependentUpon>PreviewCaptureButtonsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VideoWindow.xaml.cs">
       <DependentUpon>VideoWindow.xaml</DependentUpon>
@@ -151,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PreviewCaptureButtonsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
