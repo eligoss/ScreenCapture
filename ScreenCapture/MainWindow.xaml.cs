@@ -95,7 +95,7 @@ namespace ScreenCapture
         {
             Views.SettingsWindow optWindow = new Views.SettingsWindow();
             optWindow.Owner = this.Owner;
-            optWindow.DataContext = new SettingsViewModel();
+            optWindow.DataContext = new SettingsViewModel(ContainerManager.Resolve<IConfigManager>());
             optWindow.ShowDialog();
         }
 

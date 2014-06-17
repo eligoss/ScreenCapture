@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Imaging;
+using Microsoft.Expression.Encoder.Devices;
 using Microsoft.Expression.Encoder.Profiles;
 
 namespace ScreenCaptureAPI
@@ -10,8 +12,12 @@ namespace ScreenCaptureAPI
         double ScreenWidth { get; }
         Rectangle ScreenRectangle { get; }
 
-        string PathToVideoDirectory { get; }
-        string PathToScreenshotDirectory { get; }
+        string PathToVideoDirectory { get; set; }
+        string PathToScreenshotDirectory { get; set; }
+        bool CaptureMouseCursor { get; set; }
+        string EncoderDeviceName { get; set; }
+
+        IEnumerable<EncoderDevice> AudioDevice { get; }
 
         int FrameRate { get; }
         int Quality { get; }

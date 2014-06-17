@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
 using System.Windows.Media;
+using Microsoft.Expression.Encoder.Devices;
 using Microsoft.Expression.Encoder.Profiles;
 using ScreenCaptureAPI.Log;
 
@@ -43,6 +45,19 @@ namespace ScreenCaptureAPI
             get { return System.Windows.SystemParameters.PrimaryScreenWidth; }
         }
 
+        public bool CaptureMouseCursor
+        {
+            get
+            {
+                bool result = false;
+                bool.TryParse(ConfigurationManager.AppSettings["CaptureMouseCursor"], out result);
+                return result;
+            }
+            set
+            {
+                System.Configuration.ConfigurationManager.AppSettings.Set("CaptureMouseCursor", value);
+            }
+        }
 
         public ImageFormat DefaultScreenshotFormat
         {
@@ -67,6 +82,10 @@ namespace ScreenCaptureAPI
                 Logging.Info("Default Video folder will be used: {0}", result);
                 return result;
             }
+            set
+            {
+                System.Configuration.ConfigurationManager.AppSettings.Set("PathToVideoDirectory", value);
+            }
         }
 
         public string PathToScreenshotDirectory
@@ -83,6 +102,10 @@ namespace ScreenCaptureAPI
                 Logging.Info("Default Screenshot folder will be used: {0}", result);
 
                 return result;
+            }
+            set
+            {
+                System.Configuration.ConfigurationManager.AppSettings.Set("PathToScreenshotDirectory", value);
             }
         }
 
@@ -122,6 +145,23 @@ namespace ScreenCaptureAPI
                 int.TryParse(bitrateString, out bitrate);
 
                 return new ConstantBitrate(bitrate);
+            }
+        }
+
+        public IEnumerable<EncoderDevice> AudioDevice
+        {
+            get { return EncoderDevices.FindDevices(EncoderDeviceType.Audio); }
+        }
+
+        string EncoderDeviceName
+        {
+            get
+            {
+                ConfigurationManager.AppSettings["EncoderDeviceName"]
+            }
+            set
+            {
+                System.Configuration.ConfigurationManager.AppSettings.Set("EncoderDeviceName", value);
             }
         }
 

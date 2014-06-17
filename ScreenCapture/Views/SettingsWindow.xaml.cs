@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ScreenCapture.ViewModels;
+using ScreenCaptureAPI;
 
 namespace ScreenCapture.Views
 {
@@ -22,6 +24,23 @@ namespace ScreenCapture.Views
         public SettingsWindow()
         {
             InitializeComponent();
+        }
+
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window w = Window.GetWindow(this);
+            w.Close();
+        }
+
+        private void Submit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var settingsViewModel = (DataContext as SettingsViewModel);
+            var configManager = ContainerManager.Resolve<IConfigManager>();
+            configManager.EncoderDeviceName = this.AudioDevicesValue.SelectedItem;
+            configManager.Quality = this.QualityValue.SelectedItem;
+            configManager.PathToVideoDirectory = this.DefaultMovieFolderValue.SelectedItem;
+            configManager.PathToScreenshotDirectory = this.DefaultScreensFolderValue.SelectedItem;
+            configManager.CaptureMouseCursor = this.IsCaptureMouseCursorValue.IsChecked;
         }
     }
 }
