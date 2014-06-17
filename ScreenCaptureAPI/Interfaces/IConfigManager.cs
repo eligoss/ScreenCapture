@@ -12,7 +12,7 @@ namespace ScreenCaptureAPI
         double ScreenWidth { get; }
         Rectangle ScreenRectangle { get; }
 
-        string PathToVideoDirectory { get; set; }
+        string PathToMovieDirectory { get; set; }
         string PathToScreenshotDirectory { get; set; }
         bool CaptureMouseCursor { get; set; }
         string EncoderDeviceName { get; set; }
@@ -20,7 +20,7 @@ namespace ScreenCaptureAPI
         IEnumerable<EncoderDevice> AudioDevice { get; }
 
         int FrameRate { get; }
-        int Quality { get; }
+        int Quality { get; set; }
         ConstantBitrate Bitrate { get; }
 
         ImageFormat DefaultScreenshotFormat { get; }

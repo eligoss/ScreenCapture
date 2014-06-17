@@ -77,7 +77,7 @@
                    FontSize="18" 
                    TextAlignment="Left"/>
 
-        <TextBox  x:Name="DefaultScreensFolderValue" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Width="200" Text="{Binding DefaultScreensFolder}"/>
+        <TextBox  x:Name="ScreenshotDirectoryValue" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Width="200" Text="{Binding ScreenshotDirectory}"/>
 
 
         <TextBlock Grid.Row="3"
@@ -89,7 +89,7 @@
                    FontSize="18" 
                    TextAlignment="Left"/>
 
-        <TextBox x:Name="DefaultMovieFolderValue"  Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Width="200" Text="{Binding DefaultMovieFolder}"/>
+        <TextBox x:Name="MovieDirectoryValue" Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Width="200" Text="{Binding MovieDirectory}"/>
 
         <TextBlock Grid.Row="4"
                    Grid.Column="0"

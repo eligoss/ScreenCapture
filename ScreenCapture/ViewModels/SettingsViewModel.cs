@@ -22,12 +22,12 @@ namespace ScreenCapture.ViewModels
             this.AudioDevices = ConfigManager.AudioDevice.Select(q => q.Name).ToList();
             this.Quality = GetQulityList().ToList();
             this.CaptureMouseCursor = ConfigManager.CaptureMouseCursor;
-            this.DefaultScreensFolder = ConfigManager.PathToScreenshotDirectory;
-            this.DefaultMovieFolder = ConfigManager.PathToVideoDirectory;
+            this.ScreenshotDirectory = ConfigManager.PathToScreenshotDirectory;
+            this.MovieDirectory = ConfigManager.PathToMovieDirectory;
         }
 
-        public string DefaultMovieFolder { get; set; }
-        public string DefaultScreensFolder { get; set; }
+        public string MovieDirectory { get; set; }
+        public string ScreenshotDirectory { get; set; }
 
 
         public List<string> AudioDevices

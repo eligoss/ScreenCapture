@@ -82,7 +82,7 @@ namespace ScreenCaptureAPI.Models
 
         private string CreateFileFullPath()
         {
-            var pathToDirectory = configManager.PathToVideoDirectory;
+            var pathToDirectory = configManager.PathToMovieDirectory;
             var tmpFileName = CreateFileName();
             var fileType = FileType.Avi.ToString();
 

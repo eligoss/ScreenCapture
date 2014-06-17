@@ -36,11 +36,14 @@ namespace ScreenCapture.Views
         {
             var settingsViewModel = (DataContext as SettingsViewModel);
             var configManager = ContainerManager.Resolve<IConfigManager>();
-            configManager.EncoderDeviceName = this.AudioDevicesValue.SelectedItem;
-            configManager.Quality = this.QualityValue.SelectedItem;
-            configManager.PathToVideoDirectory = this.DefaultMovieFolderValue.SelectedItem;
-            configManager.PathToScreenshotDirectory = this.DefaultScreensFolderValue.SelectedItem;
-            configManager.CaptureMouseCursor = this.IsCaptureMouseCursorValue.IsChecked;
+            configManager.EncoderDeviceName = settingsViewModel.AudioDevices.ElementAt(this.AudioDevicesValue.SelectedIndex);
+            configManager.Quality = settingsViewModel.Quality.ElementAt(this.QualityValue.SelectedIndex);
+            configManager.PathToMovieDirectory = this.MovieDirectoryValue.Text;
+            configManager.PathToScreenshotDirectory = this.ScreenshotDirectoryValue.Text;
+            configManager.CaptureMouseCursor = this.IsCaptureMouseCursorValue.IsChecked.Value;
+
+            Window w = Window.GetWindow(this);
+            w.Close();
         }
     }
 }

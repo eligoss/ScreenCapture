@@ -21,7 +21,7 @@ namespace ScreenCaptureAPI
             Logging.Info("ScreenHeight: {0}", ScreenHeight);
             Logging.Info("ScreenWidth: {0}", ScreenWidth);
 
-            Logging.Info("PathToVideoDirectory: {0}", PathToVideoDirectory);
+            Logging.Info("PathToVideoDirectory: {0}", PathToMovieDirectory);
             Logging.Info("FrameRate: {0}", FrameRate);
             Logging.Info("Quality: {0}", Quality);
             Logging.Info("Bitrate: {0}", Bitrate);
@@ -55,7 +55,7 @@ namespace ScreenCaptureAPI
             }
             set
             {
-                System.Configuration.ConfigurationManager.AppSettings.Set("CaptureMouseCursor", value);
+                System.Configuration.ConfigurationManager.AppSettings.Set("CaptureMouseCursor", value.ToString());
             }
         }
 
@@ -68,7 +68,7 @@ namespace ScreenCaptureAPI
             }
         }
 
-        public string PathToVideoDirectory
+        public string PathToMovieDirectory
         {
             get
             {
@@ -133,6 +133,11 @@ namespace ScreenCaptureAPI
 
                 return quality;
             }
+
+            set
+            {
+                System.Configuration.ConfigurationManager.AppSettings.Set("Quality", value.ToString());
+            }
         }
 
         public ConstantBitrate Bitrate
@@ -153,11 +158,11 @@ namespace ScreenCaptureAPI
             get { return EncoderDevices.FindDevices(EncoderDeviceType.Audio); }
         }
 
-        string EncoderDeviceName
+        public string EncoderDeviceName
         {
             get
             {
-                ConfigurationManager.AppSettings["EncoderDeviceName"]
+              return  ConfigurationManager.AppSettings["EncoderDeviceName"];
             }
             set
             {
