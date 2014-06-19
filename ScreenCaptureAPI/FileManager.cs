@@ -4,27 +4,14 @@ using System.Drawing.Imaging;
 using System.IO;
 using ScreenCaptureAPI.Interfaces;
 using ScreenCaptureAPI.Log;
+using ScreenCaptureAPI.Models;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace ScreenCaptureAPI
 {
     public class FileManager : IFileManager
     {
-        public void SaveToFile(Stream inputStream, string destPath)
-        {
-            try
-            {
-                using (var fileStream = new FileStream(destPath, FileMode.Create, FileAccess.Write))
-                {
-                    inputStream.CopyTo(fileStream);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logging.Info("FileManager Exception");
-                Logging.LogError(ex, ex.Message);
-            }
-        }
-
         public void SaveScreenShot(Bitmap image, ImageFormat imageFormat, string fullPath)
         {
             try
@@ -38,9 +25,35 @@ namespace ScreenCaptureAPI
             }
         }
 
-        public void GetInfoFromFile(string filePath)
+        public void SaveSettingInConfig(SettingsModel settingsModel)
         {
-            throw new NotImplementedException();
+            var serializer = new XmlSerializer(settingsModel.GetType());
+
+            using (var writer = XmlWriter.Create("settings.xml"))
+            {
+                serializer.Serialize(writer, settingsModel);
+            }
+        }
+
+        public SettingsModel LoadSettingFromConfig()
+        {
+            try
+            {
+                var serializer = new XmlSerializer(typeof(SettingsModel));
+                if (File.Exists("settings.xml"))
+                {
+
+                    using (var reader = XmlReader.Create("settings.xml"))
+                    {
+                        return (SettingsModel)serializer.Deserialize(reader);
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

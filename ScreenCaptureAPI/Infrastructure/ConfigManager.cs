@@ -8,14 +8,20 @@ using System.Windows;
 using System.Windows.Media;
 using Microsoft.Expression.Encoder.Devices;
 using Microsoft.Expression.Encoder.Profiles;
+using ScreenCaptureAPI.Interfaces;
 using ScreenCaptureAPI.Log;
+using ScreenCaptureAPI.Models;
 
 namespace ScreenCaptureAPI
 {
     public class ConfigManager : IConfigManager
     {
+        private readonly SettingsModel settings;
+
         public ConfigManager()
         {
+            settings = ContainerManager.Resolve<IFileManager>().LoadSettingFromConfig();
+
             Logging.Info("*************************");
             Logging.Info("ConfigManager");
             Logging.Info("ScreenHeight: {0}", ScreenHeight);
@@ -53,10 +59,6 @@ namespace ScreenCaptureAPI
                 bool.TryParse(ConfigurationManager.AppSettings["CaptureMouseCursor"], out result);
                 return result;
             }
-            set
-            {
-                System.Configuration.ConfigurationManager.AppSettings.Set("CaptureMouseCursor", value.ToString());
-            }
         }
 
         public ImageFormat DefaultScreenshotFormat
@@ -72,7 +74,12 @@ namespace ScreenCaptureAPI
         {
             get
             {
-                string pathToDirectory = ConfigurationManager.AppSettings["PathToVideoDirectory"];
+                string pathToDirectory = "";
+
+                if (string.IsNullOrEmpty(settings == null ? "" : settings.PathToMovieDirectory))
+                    pathToDirectory = ConfigurationManager.AppSettings["PathToVideoDirectory"];
+                else
+                    pathToDirectory = settings.PathToMovieDirectory;
 
                 if (Directory.Exists(pathToDirectory))
                     return pathToDirectory;
@@ -82,17 +89,17 @@ namespace ScreenCaptureAPI
                 Logging.Info("Default Video folder will be used: {0}", result);
                 return result;
             }
-            set
-            {
-                System.Configuration.ConfigurationManager.AppSettings.Set("PathToVideoDirectory", value);
-            }
         }
 
         public string PathToScreenshotDirectory
         {
             get
             {
-                string pathToDirectory = ConfigurationManager.AppSettings["PathToScreenshotDirectory"];
+                string pathToDirectory = "";
+                if (string.IsNullOrEmpty(settings == null ? "" : settings.PathToScreenshotDirectory))
+                    pathToDirectory = ConfigurationManager.AppSettings["PathToScreenshotDirectory"];
+                else
+                    pathToDirectory = settings.PathToScreenshotDirectory;
 
                 if (Directory.Exists(pathToDirectory))
                     return pathToDirectory;
@@ -102,10 +109,6 @@ namespace ScreenCaptureAPI
                 Logging.Info("Default Screenshot folder will be used: {0}", result);
 
                 return result;
-            }
-            set
-            {
-                System.Configuration.ConfigurationManager.AppSettings.Set("PathToScreenshotDirectory", value);
             }
         }
 
@@ -126,17 +129,18 @@ namespace ScreenCaptureAPI
         {
             get
             {
+                if (settings != null)
+                {
+                    if (settings.Quality != 0)
+                        return settings.Quality;
+                }
+
                 var qualityString = ConfigurationManager.AppSettings["Quality"];
                 int quality = default(int);
 
                 int.TryParse(qualityString, out quality);
 
                 return quality;
-            }
-
-            set
-            {
-                System.Configuration.ConfigurationManager.AppSettings.Set("Quality", value.ToString());
             }
         }
 
@@ -153,20 +157,26 @@ namespace ScreenCaptureAPI
             }
         }
 
-        public IEnumerable<EncoderDevice> AudioDevice
+        public IEnumerable<EncoderDevice> AudioDevices
         {
             get { return EncoderDevices.FindDevices(EncoderDeviceType.Audio); }
+        }
+
+        public string AudioDevice
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(settings == null ? "" : settings.EncoderDeviceName))
+                    return settings.EncoderDeviceName;
+                return string.Empty;
+            }
         }
 
         public string EncoderDeviceName
         {
             get
             {
-              return  ConfigurationManager.AppSettings["EncoderDeviceName"];
-            }
-            set
-            {
-                System.Configuration.ConfigurationManager.AppSettings.Set("EncoderDeviceName", value);
+                return settings.EncoderDeviceName;
             }
         }
 

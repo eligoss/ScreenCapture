@@ -40,12 +40,12 @@
                   x:Name="AudioDevicesValue"
                   Background="White" 
                   Padding="5" 
-                  SelectedIndex="0" 
+                  SelectedIndex="{Binding Path=audioDeviceIndex}"
                   Grid.Row="0" 
                   Grid.Column="2" 
                   VerticalAlignment="Center" 
                   HorizontalAlignment="Stretch" 
-                  Width="200"
+                  Width="200"                  
                   ItemsSource="{Binding Path=AudioDevices}"/>
 
         <TextBlock Grid.Row="1"

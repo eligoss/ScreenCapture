@@ -20,11 +20,11 @@ namespace ScreenCapture
             Bootstrapper.Initialise();
             screenManager = ContainerManager.Resolve<CaptureAPI>();
 
-            //this.DataContext = new MainViewModel();
+
             int countofProcess = RunningInstance();
             if (countofProcess == 1)
             {
-                System.Windows.Forms.MessageBox.Show("ScreenGrabberNet already run.", "ScreenGrabberNet");
+                System.Windows.Forms.MessageBox.Show("ScreenCapture already run.", "ScreenCapture");
                 this.Close();
                 return;
             }
@@ -42,21 +42,17 @@ namespace ScreenCapture
             Process current = Process.GetCurrentProcess();
             Process[] processes = Process.GetProcessesByName(current.ProcessName);
             int count = 0;
-            //Просматриваем все процессы 
             foreach (Process process in processes)
             {
-                //Игнорируем текущий процесс
                 if (process.Id != current.Id)
                 {
-                    //Проверяем, что процесс запущен из того же файла 
                     if (Assembly.GetExecutingAssembly().Location.Replace("/", "\\") == current.MainModule.FileName)
                     {
                         count++;
-                        //Да, это и есть копия нашего приложения
+
                     }
                 }
             }
-            //Нет, таких же процессов не найдено
             return count;
         }
 

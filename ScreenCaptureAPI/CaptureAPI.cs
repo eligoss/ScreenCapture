@@ -10,7 +10,7 @@ namespace ScreenCaptureAPI
     {
         private readonly IScreenManager screenHelper;
         private readonly IConfigManager configManager;
-        private readonly IFileManager fileManager;
+        private readonly IFileManager fileManager;        
 
         public CaptureAPI()
         {
@@ -45,15 +45,8 @@ namespace ScreenCaptureAPI
 
         public ScreenshotConfigModel TakeScreenShot(ScreenshotConfigModel screenshotConfigModel, string specificFolderToSave = null)
         {
-            return screenHelper.TakeScreenshot(screenshotConfigModel);
-            // fileManager.SaveScreenShot(image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
-        }
-
-        public void SaveScreenShot(ScreenshotConfigModel screenshotConfigModel)
-        {
-            fileManager.SaveScreenShot(screenshotConfigModel.Image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
-        }
-
+            return screenHelper.TakeScreenshot(screenshotConfigModel);            
+        }     
 
         public void TakeScreenShot()
         {
@@ -66,6 +59,10 @@ namespace ScreenCaptureAPI
             fileManager.SaveScreenShot(screenshotConfigModel.Image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
         }
 
+        public void SaveScreenShot(ScreenshotConfigModel screenshotConfigModel)
+        {
+            fileManager.SaveScreenShot(screenshotConfigModel.Image, screenshotConfigModel.ImageFormat, screenshotConfigModel.FileFullPath);
+        }
 
         public void Dispose()
         {

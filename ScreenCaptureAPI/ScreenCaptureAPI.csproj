@@ -83,10 +83,12 @@
     <Compile Include="Models\ScreenCaptureConfigModel.cs" />
     <Compile Include="Models\ScreenShotConfigModel.cs" />
     <Compile Include="CaptureAPI.cs" />
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

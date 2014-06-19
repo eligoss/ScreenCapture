@@ -19,7 +19,15 @@ namespace ScreenCapture.ViewModels
 
         public SettingsViewModel(IConfigManager ConfigManager)
         {
-            this.AudioDevices = ConfigManager.AudioDevice.Select(q => q.Name).ToList();
+            this.AudioDevices = ConfigManager.AudioDevices.Select(q => q.Name).ToList();
+
+            var AudioDevice = ConfigManager.AudioDevices.Where(q => q.Name == ConfigManager.EncoderDeviceName).ToList();
+
+            if (AudioDevice.Count == 1)
+            {
+                List<string> a = ConfigManager.AudioDevices.Select(q => q.Name).ToList();
+                this.audioDeviceIndex = a.IndexOf(ConfigManager.EncoderDeviceName);
+            }
             this.Quality = GetQulityList().ToList();
             this.CaptureMouseCursor = ConfigManager.CaptureMouseCursor;
             this.ScreenshotDirectory = ConfigManager.PathToScreenshotDirectory;
@@ -28,6 +36,7 @@ namespace ScreenCapture.ViewModels
 
         public string MovieDirectory { get; set; }
         public string ScreenshotDirectory { get; set; }
+        public int audioDeviceIndex { get; set; }
 
 
         public List<string> AudioDevices

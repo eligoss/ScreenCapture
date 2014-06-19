@@ -59,7 +59,7 @@ namespace ScreenCaptureAPI.Models
             get
             {
                 if (pAudioDevice == null)
-                    return AudioDevices.First(item => item.Name.Contains(@"Speakers"));
+                    return AudioDevices.First(item => item.Name.Contains(configManager.AudioDevice));
                 else
                     return pAudioDevice;
 

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ScreenCapture.ViewModels;
 using ScreenCaptureAPI;
+using ScreenCaptureAPI.Interfaces;
+using ScreenCaptureAPI.Models;
 
 namespace ScreenCapture.Views
 {
@@ -35,12 +37,17 @@ namespace ScreenCapture.Views
         private void Submit_Button_Click(object sender, RoutedEventArgs e)
         {
             var settingsViewModel = (DataContext as SettingsViewModel);
-            var configManager = ContainerManager.Resolve<IConfigManager>();
-            configManager.EncoderDeviceName = settingsViewModel.AudioDevices.ElementAt(this.AudioDevicesValue.SelectedIndex);
-            configManager.Quality = settingsViewModel.Quality.ElementAt(this.QualityValue.SelectedIndex);
-            configManager.PathToMovieDirectory = this.MovieDirectoryValue.Text;
-            configManager.PathToScreenshotDirectory = this.ScreenshotDirectoryValue.Text;
-            configManager.CaptureMouseCursor = this.IsCaptureMouseCursorValue.IsChecked.Value;
+            var fileManager = ContainerManager.Resolve<IFileManager>();
+
+            var settings = new SettingsModel
+            {
+                EncoderDeviceName = settingsViewModel.AudioDevices.ElementAt(this.AudioDevicesValue.SelectedIndex),
+                Quality = settingsViewModel.Quality.ElementAt(this.QualityValue.SelectedIndex),
+                PathToMovieDirectory = this.MovieDirectoryValue.Text,
+                PathToScreenshotDirectory = this.ScreenshotDirectoryValue.Text,
+                CaptureMouseCursor = this.IsCaptureMouseCursorValue.IsChecked.Value
+            };
+            fileManager.SaveSettingInConfig(settings);
 
             Window w = Window.GetWindow(this);
             w.Close();

@@ -7,7 +7,7 @@
              Width="250"
              Height="70">
 
-    <Border BorderThickness="1" CornerRadius="5"  Background="#FFFFFBF4" BorderBrush="#FF707070" >
+    <Border BorderThickness="1" CornerRadius="5"  Background="#FFFFFBF4" BorderBrush="White" >
         <Grid HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -25,6 +25,7 @@
                        Grid.Row="0"                       
                        Grid.Column="0"                       
                        TextAlignment="Center"
+                       Margin="5 0 0 0"
                        VerticalAlignment="Bottom" 
                        Grid.ColumnSpan="4"
                        HorizontalAlignment="Left"
@@ -40,6 +41,7 @@
                        VerticalAlignment="Bottom"
                        Grid.ColumnSpan="4"
                        HorizontalAlignment="Left"
+                       Margin="5 0 0 0"
                        Opacity="0"
                        FontSize="16">
             </TextBlock>
@@ -53,6 +55,7 @@
                        Grid.ColumnSpan="4"
                        HorizontalAlignment="Left"
                        Opacity="0"
+                       Margin="5 0 0 0"
                        FontSize="16">
             </TextBlock>
 
@@ -63,6 +66,7 @@
                        TextAlignment="Center"
                        VerticalAlignment="Bottom"
                        Grid.ColumnSpan="4"
+                       Margin="5 0 0 0"
                        HorizontalAlignment="Left"
                        Opacity="0"
                        FontSize="16">
